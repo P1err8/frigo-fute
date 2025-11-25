@@ -9,12 +9,12 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= link_to "Skip to main content", "#main-content", class: "visually-hidden-focusable" %>
     <header>
       <%= render "shared/navbar" %> <!-- 👈 Add this for navbar -->
     </header>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <div class= "row">
     <%= yield %>
     </div>
