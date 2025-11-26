@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   has_many :recipes, dependent: :destroy
+  has_many :messages, through: :recipes
 end
