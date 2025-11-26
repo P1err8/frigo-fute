@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>
+    Donne moi tes ingredients wesh
+  </h1>
+  <%= simple_form_for @recipe do |f| %>
+    <%= f.input :content, placeholder: 'list your ingredients…', required: true %>
+    <%= f.button :submit, "generate a recipe", class:"btn btn-primary" %>
+  <% end %>
+  <%# link_to "generate a recipe", user_recipes_path(current_user), data: {turbo_method: :post} %>
+</div>
