@@ -11,7 +11,15 @@
 
 puts "Cleaning database..."
 Recipe.destroy_all
+User.destroy_all
 puts "Done."
+
+user = User.create!(
+  username: "demo",
+  email: "demo@frigo_fute.com",
+  password: "Secret42"
+)
+
 
 recipe_markdown = <<~MARKDOWN
   # 🍝 Pâtes sautées à la viande hachée et œuf
@@ -87,8 +95,8 @@ puts "Creating seed recipe..."
 
 recipe = Recipe.create!(
   name: "Pâtes sautées à la viande hachée et œuf",
-  content: "œuf, viande hachée, pâtes, oignon, huile, sel, poivre, herbes",
-  content_markdown: recipe_markdown
+  content: recipe_markdown,
+  user: user
 )
 
 puts "Created recipe ##{recipe.id}"
