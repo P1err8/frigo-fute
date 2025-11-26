@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :username, presence: true
-  has_many :chats, dependent: :destroy
+  has_many :recipes, dependent: :destroy
 end
