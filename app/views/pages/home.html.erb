@@ -1,14 +1,18 @@
 <div class="container w-80">
   <% if current_user %>
-    <div class="mt-5 mb-5">
-      <h1>Créer une recette </h1>
-      <%= link_to "Create a recipe", new_recipe_path, class:"btn btn-primary w-100" %>
+
+     <div class="mt-5 mb-5 ms-3 me-3">
+        <h1 class="title-medium">Laissez-vous guider par l'assistant Frigo-Futé</h1>
+          <%= link_to "Créer une recette", new_recipe_path, class:"btn-recipe" %>
     </div>
-    <div class="mt-5 mb-5">
-      <%= link_to "Mes recettes enregistrées", recipes_path, class: "btn btn-success w-100" %>
+
+    <div class="mt-5 mb-5 ms-3 me-3">
+      <h1 class="title-medium">Consulter vos recettes enregistrées</h1>
+      <%= link_to "Mes recettes", recipes_path, class: "btn-historic" %>
     </div>
   <% end %>
-  <div class="col d-flex justify-content-around gap-3">
+
+  <%# <div class="col d-flex justify-content-around gap-3">
     <div class="card" style="width: 18rem;">
       <img src="" alt="IMG RECIPE">
       <div class="card-body">
@@ -16,6 +20,5 @@
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       </div>
     </div>
-  </div>
-</div>
+  </div> %>
 </div>
