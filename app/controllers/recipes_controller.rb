@@ -82,7 +82,6 @@ class RecipesController < ApplicationController
 
     @message.role = "user"
     @message.recipe = @recipe
-
     if @message.save
 
       ruby_llm_chat = RubyLLM.chat
@@ -91,7 +90,7 @@ class RecipesController < ApplicationController
       Message.create(role: "assistant", content: response.content, recipe: @recipe)
       redirect_to recipe_path(@recipe)
     else
-      render "recipes/show", status: :unprocessable_entity
+      render "recipes/new", status: :unprocessable_entity
     end
   end
 
