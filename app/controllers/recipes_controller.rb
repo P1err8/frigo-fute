@@ -9,56 +9,82 @@ class RecipesController < ApplicationController
     - Chaque section doit être dans une balise <details> avec un <summary>.
     - Pas d'explications internes, pas de notes, pas d'autres formats.
     - Le résultat final doit être EXCLUSIVEMENT du Markdown + HTML `<details>`.
+    - Toujours respecter le FORMAT OBLIGATOIRE ci-dessous.
     FORMAT OBLIGATOIRE :
+
     <div id='global-container'>
-      # {Titre de la recette}
-      ---
-      <details open class='infos-block'>
-        <summary><strong> Infos rapides</strong></summary>
-      <ul>
-        <li> Niveau : {facile/moyen/difficile} </li>
-        <li> Temps total : {xx min} </li>
-        <li> Préparation : {xx min} </li>
-        <li> Cuisson : {xx min} </li>
-        <li> Portions : {x personnes} </li>
-      </ul>
-      </details>
-      ---
-      <details open class='infos-block'>
-      <summary><strong> Ingrédients</strong></summary>
-        <ul>
-      <li> {ingrédients principal 1} </li>
-      <li> {ingrédients principal 2} </li>
-      <li> {ingrédients principal 3} </li>
-      ...
-      <li> Optionnel </li>
-      <li> {ingrédients optionnel 1} </li>
-      <li> {ingrédients optionnel 2} </li>
-      ...
-      </ul>
-      </details>
-      ---
-      <details open class='infos-block'>
-        <summary><strong> Ustensiles</strong></summary>
-        <ul>
-          <li> {liste des ustensiles} </li>
-        </ul>
-      </details>
-      ---
-      <details open class='infos-block'>
-        <summary><strong> Étapes</strong></summary>
-        <ul>
-      <li> 1. {étape 1} </li>
-      <li> 2. {étape 2} </li>
-      <li> 3. {étape 3} </li>
-      ...
-      </ul>
-      </details>
-      ---
-      <details open class='dont-waste-block'>
+      <h1 id='recipe-title'> # {Titre de la recette} </h1>
+
+      <div class='dont-waste-block'>
         <summary><strong> Anti-gaspillage</strong></summary>
-      {phrase courte}
+        <p> {phrase courte} </p>
+      </div>
+
+      <div class='short-infos-and-ustensils'>
+        <details open class='infos-rapides'>
+          <summary><strong> Infos rapides</strong></summary>
+          <ul>
+            <li> Niveau : {facile/moyen/difficile} </li>
+            <li> Temps total : {xx min} </li>
+            <li> Préparation : {xx min} </li>
+            <li> Cuisson : {xx min} </li>
+            <li> Portions : {x personnes} </li>
+          </ul>
+        </details>
+
+        <details open class='ustensiles'>
+          <summary><strong> Ustensiles</strong></summary>
+          <ul>
+            <li> {ustensiles 1} </li>
+            <li> {ustensiles 2} </li>
+            <li> {ustensiles 3} </li>
+            <li> {ustensiles 4} </li>
+            ...
+          </ul>
+        </details>
+      </div>
+
+
+      <details open class='ingredients-block'>
+      <summary><strong> Ingrédients</strong></summary>
+        <div class='ingredients-container'>
+          <div class='ingredients-needed'>
+            <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>
+            <ul>
+              <li> {ingrédients principal 1} </li>
+              <li> {ingrédients principal 2} </li>
+              <li> {ingrédients principal 3} </li>
+              <li> {ingrédients principal 4} </li>
+              ...
+            </ul>
+          </div>
+
+          <div class='optional-ingredients'>
+            <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>
+            <ul>
+              <li> {ingrédients optionnel 1} </li>
+              <li> {ingrédients optionnel 2} </li>
+              <li> {ingrédients optionnel 3} </li>
+              <li> {ingrédients optionnel 4} </li>
+              ...
+            </ul>
+          </div>
+        </div>
+
       </details>
+
+
+      <details open class='etapes-block'>
+        <summary><strong> Étapes</strong></summary>
+        <ol>
+          <li> {étape 1} </li>
+          <li> {étape 2} </li>
+          <li> {étape 3} </li>
+          ...
+        </ol>
+      </details>
+
+
     </div>
   "
   def index

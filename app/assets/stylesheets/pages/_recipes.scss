@@ -1,38 +1,134 @@
 #global-container {
   padding: 80px;
+  background-color: #f4e8d5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#recipe-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+summary {
+  font-size: 1.1em;
+  padding: 15px;
+  cursor: pointer;
+  color: #3D3A35;
+  background-color: #FAF4EA !important;
+  border-radius: 4px;
+}
+
+li {
+  font-size: 0.9em;
+  color: #5C5750;
+  margin-top: 20px;
+}
+
+.short-infos-and-ustensils {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+
+
+  .infos-rapides {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    background-color: white !important;
+  }
+
+  .ustensiles {
+    width: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    background-color: white !important;
+  }
+
 }
 
 
-
-
-
-
-
-.infos-block {
-  background-color: rgb(237, 239, 237) !important;
+.ingredients-block {
+  background-color: white !important;
   border-radius: 8px;
   padding: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
 
-  summary {
-    font-size: 1.1em;
-    padding: 15px;
-    cursor: pointer;
+  .ingredients-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 10px;
+
+
+    .ingredients-needed {
+    background-color: #FEFCFA !important;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    list-style: none;
+
+
+      #title-igredients-needed {
+        font-size: 1em;
+        color: #3D3A35;
+      }
+
+    }
+
+    .optional-ingredients {
+      list-style: none;
+      background-color: #FEFCFA !important;
+      border-radius: 4px;
+      padding: 10px;
+      width: 100%;
+
+
+      #title-igredients-optional {
+        font-size: 1em;
+        color: #3D3A35;
+      }
+
+    }
+
   }
+
+}
+
+
+.etapes-block {
+  background-color: white !important;
+  border-radius: 8px;
+  padding: 10px;
+
 }
 
 
 .dont-waste-block {
-  background-color: #d4edda !important;
+  background-color: #ffffff !important;
   border-radius: 8px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+
 
   summary {
     font-size: 1.1em;
     padding: 15px;
     cursor: pointer;
-    color: aquamarine;
-    background-color: #1bb840;
+    color: #3D3A35;
+    background-color:  #d4ffde !important;
+    text-align: center;
+  }
+
+  p {
+    font-size: 0.9em;
+    color: #5C5750;
+    padding: 10px;
+    text-align: center;
   }
 }
