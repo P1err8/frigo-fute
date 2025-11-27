@@ -61,6 +61,10 @@ class RecipesController < ApplicationController
       </details>
     </div>
   "
+  def index
+    @recipes = current_user.recipes
+  end
+
   def new
     @recipe = Recipe.new(name: "untitled")
     @message = Message.new
@@ -71,7 +75,9 @@ class RecipesController < ApplicationController
   end
 
   def create
+    # reprende ça plus tard (je prend une recette si LLM down ?)
     @recipe = Recipe.create(user: current_user, name: "untitled")
+
     @message = Message.new(recipe_params)
 
     @message.role = "user"
