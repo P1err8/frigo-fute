@@ -1,0 +1,31 @@
+.recipe-generator-wrapper {
+  background: #f8f9fa;
+  height: 90vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  .generator-card {
+    border-radius: 1rem;
+    background: white;
+  }
+
+  .ingredient-input {
+    min-height: 160px;
+    resize: vertical;
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+}
+
+.notice {
+  background: #f8f9fa !important;
+}
+.h1custom {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.text-center button {
+  border-radius: 0.75rem;
+}
