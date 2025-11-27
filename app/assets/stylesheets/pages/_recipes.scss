@@ -1,0 +1,38 @@
+#global-container {
+  padding: 80px;
+}
+
+
+
+
+
+
+
+.infos-block {
+  background-color: rgb(237, 239, 237) !important;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  summary {
+    font-size: 1.1em;
+    padding: 15px;
+    cursor: pointer;
+  }
+}
+
+
+.dont-waste-block {
+  background-color: #d4edda !important;
+  border-radius: 8px;
+  padding: 10px;
+
+  summary {
+    font-size: 1.1em;
+    padding: 15px;
+    cursor: pointer;
+    color: aquamarine;
+    background-color: #1bb840;
+  }
+}
