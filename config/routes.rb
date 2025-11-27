@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   #   resources :recipes, only: [:create, :new]
   # end
 
-  resources :recipes, only: [:show, :index, :create, :new] do
-    resources :messages, only: [:create]
-  end
+  resources :recipes, only: [:show, :index, :create, :new]
 
 end
