@@ -1,7 +1,6 @@
 class Recipe < ApplicationRecord
   belongs_to :user
   has_many :messages
-  validates :content, presence: true
 
   MARKDOWN = "<<~MARKDOWN
     # 🍝 Pâtes sautées à la viande hachée et œuf

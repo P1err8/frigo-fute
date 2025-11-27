@@ -105,11 +105,10 @@ class RecipesController < ApplicationController
     @recipe = Recipe.create(user: current_user, name: "untitled")
 
     @message = Message.new(recipe_params)
-
     @message.role = "user"
     @message.recipe = @recipe
-    if @message.save
 
+    if @message.save
       ruby_llm_chat = RubyLLM.chat
       response = ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
       # message assistant
