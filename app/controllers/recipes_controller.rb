@@ -10,46 +10,56 @@ class RecipesController < ApplicationController
     - Pas d'explications internes, pas de notes, pas d'autres formats.
     - Le résultat final doit être EXCLUSIVEMENT du Markdown + HTML `<details>`.
     FORMAT OBLIGATOIRE :
-    # {Titre de la recette}
-    ---
-    <details open>
-      <summary><strong> Infos rapides</strong></summary>
-    - Niveau : {facile/moyen/difficile}
-    - Temps total : {xx min}
-    - Préparation : {xx min}
-    - Cuisson : {xx min}
-    - Portions : {x personnes}
-    </details>
-    ---
-    <details open>
+    <div id='global-container'>
+      # {Titre de la recette}
+      ---
+      <details open class='infos-block'>
+        <summary><strong> Infos rapides</strong></summary>
+      <ul>
+        <li> Niveau : {facile/moyen/difficile} </li>
+        <li> Temps total : {xx min} </li>
+        <li> Préparation : {xx min} </li>
+        <li> Cuisson : {xx min} </li>
+        <li> Portions : {x personnes} </li>
+      </ul>
+      </details>
+      ---
+      <details open class='infos-block'>
       <summary><strong> Ingrédients</strong></summary>
-      <ul>
-    <li> {ingrédients principaux} </li>
-    <br>
-    <li> Optionnel </li>
-    <li> {ingrédients optionnels} </li>
-    </ul>
-    </details>
-    ---
-    <details open>
-      <summary><strong> Ustensiles</strong></summary>
-    - {liste des ustensiles}
-    </details>
-    ---
-    <details open>
-      <summary><strong> Étapes</strong></summary>
-      <ul>
-    <li> 1. {étape 1} </li>
-    <li> 2. {étape 2} </li>
-    <li> 3. {étape 3} </li>
-    ...
-    </ul>
-    </details>
-    ---
-    <details open>
-      <summary><strong> Anti-gaspillage</strong></summary>
-    {phrase courte}
-    </details>
+        <ul>
+      <li> {ingrédients principal 1} </li>
+      <li> {ingrédients principal 2} </li>
+      <li> {ingrédients principal 3} </li>
+      ...
+      <li> Optionnel </li>
+      <li> {ingrédients optionnel 1} </li>
+      <li> {ingrédients optionnel 2} </li>
+      ...
+      </ul>
+      </details>
+      ---
+      <details open class='infos-block'>
+        <summary><strong> Ustensiles</strong></summary>
+        <ul>
+          <li> {liste des ustensiles} </li>
+        </ul>
+      </details>
+      ---
+      <details open class='infos-block'>
+        <summary><strong> Étapes</strong></summary>
+        <ul>
+      <li> 1. {étape 1} </li>
+      <li> 2. {étape 2} </li>
+      <li> 3. {étape 3} </li>
+      ...
+      </ul>
+      </details>
+      ---
+      <details open class='dont-waste-block'>
+        <summary><strong> Anti-gaspillage</strong></summary>
+      {phrase courte}
+      </details>
+    </div>
   "
   def new
     @recipe = Recipe.new(name: "untitled")
