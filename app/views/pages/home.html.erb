@@ -1,6 +1,11 @@
 <div class="container w-80">
   <% if current_user %>
 
+    <div class="mt-5 mb-5 ms-3 me-3">
+        <h1 class="title"> Bienvenue dans <strong>Frigo-Futé</strong> l'assistant IA qui met de la couleur dans ton assiette !</h1>
+    </div>
+
+
      <div class="mt-5 mb-5 ms-3 me-3">
         <%# <h1 class="title-medium">Laissez-vous guider par l'assistant Frigo-Futé</h1> %>
           <%= link_to "Créer une recette", new_recipe_path, class:"btn-recipe" %>

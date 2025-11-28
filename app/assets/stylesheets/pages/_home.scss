@@ -10,21 +10,28 @@ body {
   font-weight: 400;
 }
 
+.title {
+  text-align: center;
+  font-size: 45px;
+}
+
 .btn-recipe {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://cdn.pixabay.com/photo/2023/06/20/17/30/youtube-banner-8077450_1280.jpg");
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px 32px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease;
@@ -46,17 +53,19 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://images.unsplash.com/photo-1653233797467-1a528819fd4f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2tpbmd8ZW58MHx8MHx8fDA%3D.JPEG");
   background-size: cover;
   background-position: center;
-  height: 180px;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 40px;
+  font-size: 45px;
   font-weight: bold;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 15px 32px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease;
