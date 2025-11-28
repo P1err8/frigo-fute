@@ -387,6 +387,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   markdown
+  nokogiri
   ostruct
   pg (~> 1.1)
   puma (>= 5.0)
