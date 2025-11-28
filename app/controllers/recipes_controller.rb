@@ -8,18 +8,12 @@ class RecipesController < ApplicationController
     - Pas plus de 6-8 étapes.
     - Chaque section doit être dans une balise <details> avec un <summary>.
     - Pas d'explications internes, pas de notes, pas d'autres formats.
-    - Interdiction de mettre le mot gaspillage dans '{Titre de la recette}'
     - Le résultat final doit être EXCLUSIVEMENT du Markdown + HTML `<details>`.
     - Toujours respecter STRICTEMENT le FORMAT ci-dessous ne sors jamais de cette structure.
     FORMAT OBLIGATOIRE :
 
     <div id='global-container'>
       <h1 id='recipe-title'> {Titre de la recette} </h1>
-
-      <div class='dont-waste-block'>
-        <summary><strong> Anti-gaspillage</strong></summary>
-        <p> {phrase courte} </p>
-      </div>
 
       <div class='short-infos-and-ustensils'>
         <details open class='infos-rapides'>

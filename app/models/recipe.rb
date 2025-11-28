@@ -2,12 +2,12 @@ require "open-uri"
 
 class Recipe < ApplicationRecord
   belongs_to :user
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_one_attached :image
 
   def find_name
     doc = Nokogiri::HTML(self.content)
-    title = doc.at_css("#recipe-title")&.text&.strip.sub(/^#\s*/, "")
+    title = doc.at_css("#recipe-title")&.text&.strip.sub(/\s*/, "")
   end
 
   def generate_and_store_picture!

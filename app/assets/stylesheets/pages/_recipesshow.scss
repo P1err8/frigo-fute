@@ -63,37 +63,36 @@ li {
     gap: 20px;
     margin-top: 10px;
 
+  }
 
-    .ingredients-needed {
-    background-color: #FEFCFA !important;
-    border-radius: 4px;
-    padding: 10px;
-    width: 100%;
-    list-style: none;
+}
 
-
-      #title-igredients-needed {
-        font-size: 1em;
-        color: #3D3A35;
-      }
-
-    }
-
-    .optional-ingredients {
-      list-style: none;
-      background-color: #FEFCFA !important;
-      border-radius: 4px;
-      padding: 10px;
-      width: 100%;
+.ingredients-block .ingredients-container .optional-ingredients {
+  list-style: none;
+  background-color: #FEFCFA !important;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
 
 
-      #title-igredients-optional {
-        font-size: 1em;
-        color: #3D3A35;
-      }
+  #title-igredients-optional {
+    font-size: 1em;
+    color: #3D3A35;
+  }
 
-    }
+}
 
+.ingredients-block .ingredients-container .ingredients-needed {
+  background-color: #FEFCFA !important;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+  list-style: none;
+
+
+  #title-igredients-needed {
+    font-size: 1em;
+    color: #3D3A35;
   }
 
 }
