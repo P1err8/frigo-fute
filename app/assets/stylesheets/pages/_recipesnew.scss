@@ -6,23 +6,55 @@
   padding: 0;
 
   .generator-card {
-    border-radius: 1rem;
+    border-radius: 16px;
     background: #f0ede8;
   }
 
   .ingredient-input {
-    min-height: 160px;
+    height: 150px;
     resize: vertical;
     font-size: 1.05rem;
     padding: 1rem;
-    background: #f3f1ec;
+    background: #ffffff;
+    border-radius: 8px;
   }
 }
 .h1custom {
   font-size: 2rem;
   font-weight: 700;
+  color: #3D3A35;
 }
 
 .text-center button {
   border-radius: 0.75rem;
+}
+
+.fridge-info {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.fridge-avatar, .recipe-avatar, .plat-avatar{
+  height: 80px;
+  margin-right: 20px;
+}
+
+#btn-submit {
+  border-radius: 4px;
+  background-color: #3D3A35;
+  color: white;
+  font-size: 1em;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1F1D1B;
+  }
+
+  &:active {
+    background-color: #1F1D1B;
+  }
 }
