@@ -9,11 +9,11 @@ class RecipesController < ApplicationController
     - Chaque section doit être dans une balise <details> avec un <summary>.
     - Pas d'explications internes, pas de notes, pas d'autres formats.
     - Le résultat final doit être EXCLUSIVEMENT du Markdown + HTML `<details>`.
-    - Toujours respecter le FORMAT OBLIGATOIRE ci-dessous.
+    - Toujours respecter STRICTEMENT le FORMAT ci-dessous ne sors jamais de cette structure.
     FORMAT OBLIGATOIRE :
 
     <div id='global-container'>
-      <h1 id='recipe-title'> # {Titre de la recette} </h1>
+      <h1 id='recipe-title'> {Titre de la recette} </h1>
 
       <div class='dont-waste-block'>
         <summary><strong> Anti-gaspillage</strong></summary>
@@ -103,7 +103,6 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-
   def create
     # reprende ça plus tard (je prend une recette si LLM down ?)
     @recipe = Recipe.create(user: current_user, name: "untitled")
@@ -117,6 +116,27 @@ class RecipesController < ApplicationController
       response = ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
       # message assistant
       Message.create(role: "assistant", content: response.content, recipe: @recipe)
+
+      # Persist AI-generated recipe content into the Recipe record
+      ai_markdown = response.content.to_s
+      # Extract title from: <h1 id='recipe-title'> {Titre de la recette} </h1>
+      extracted_title = begin
+        # Capture inner text of the H1 with id=recipe-title
+        m = ai_markdown.match(/<h1\s+id=['"]recipe-title['"]\s*>\s*(.*?)\s*<\/h1>/im)
+        inner = m && m[1] ? m[1].to_s.strip : nil
+        if inner
+          # Remove surrounding curly braces (e.g., {Titre de la recette}) to get just the title
+          inner = inner.gsub(/^\{\s*/, '').gsub(/\s*\}$/, '').strip
+        end
+        inner.presence
+      rescue
+        nil
+      end
+
+      @recipe.update(
+        name: (extracted_title.presence || @recipe.name || 'untitled'),
+        content: ai_markdown
+      )
       redirect_to recipe_path(@recipe)
     else
       render "recipes/new", status: :unprocessable_entity

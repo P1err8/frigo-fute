@@ -1,0 +1,31 @@
+.recipe-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.recipe-title-card {
+  background: #fff;
+  padding: 1.4rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+
+
+
+  h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2C2C2C;
+  }
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    border-color: #FFB347;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
