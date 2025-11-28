@@ -115,6 +115,12 @@ class RecipesController < ApplicationController
     end
   end
 
+  def generate_image
+    @recipe = Recipe.find(params[:id])
+    @recipe.generate_and_store_picture!
+    redirect_to recipe_path(@recipe)
+  end
+
   private
 
   def recipe_params

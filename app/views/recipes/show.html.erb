@@ -1,1 +1,5 @@
 <%= raw(render_markdown(@recipe.messages.last.content)) %>
+<div class="d-flex flex-column align-items-center">
+  <%= button_to "Visualisez la recette ?", generate_image_recipe_path(@recipe), class: "btn btn-warning btn-lg px-4 mb-3" %>
+  <%= image_tag(@recipe.image.url, style: "width:500px;") %>
+</div>

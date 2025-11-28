@@ -19,6 +19,7 @@ class Recipe < ApplicationRecord
       - Présentée de manière appétissante sur une belle assiette
       - Avec des couleurs vives et naturelles
       - Style photographie culinaire professionnelle
+      L’image doit impérativement être légère : pas de 4K, pas d’ultra HD, résolution limitée à 1024px max, poids minimal, juste une illustration simple pour interface web
 
       Plat à photographier : #{name}
 

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   #   resources :recipes, only: [:create, :new]
   # end
 
-  resources :recipes, only: [:show, :index, :create, :new]
+  resources :recipes, only: [:show, :index, :create, :new] do
+    member do
+      post :generate_image
+    end
+  end
 
 end
