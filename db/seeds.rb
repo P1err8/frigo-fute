@@ -10,93 +10,106 @@
 
 
 puts "Cleaning database..."
-Recipe.destroy_all
+puts ""
 User.destroy_all
 puts "Done."
+puts ""
+
 
 user = User.create!(
   username: "demo",
-  email: "demo@frigo_fute.com",
-  password: "Secret42"
+  email: "demo@demo.com",
+  password: "demodemo"
 )
-
-
-recipe_markdown = <<~MARKDOWN
-  # 🍝 Pâtes sautées à la viande hachée et œuf
-
-  ---
-
-  <details open>
-    <summary><strong>📌 Infos rapides</strong></summary>
-
-  - Niveau : facile
-  - Temps total : 20 min
-  - Préparation : 10 min
-  - Cuisson : 10 min
-  - Portions : 2 personnes
-
-  </details>
-
-  ---
-
-  <details open>
-    <summary><strong>🥣 Ingrédients</strong></summary>
-
-  ### Base
-  - 200 g de pâtes
-  - 150 g de viande hachée
-  - 1 œuf
-
-  ### Optionnel
-  - 1 oignon
-  - 1 c. à soupe d’huile
-  - Sel, poivre
-  - Herbes séchées
-
-  </details>
-
-  ---
-
-  <details open>
-    <summary><strong>🔧 Ustensiles</strong></summary>
-
-  - Casserole
-  - Poêle
-  - Passoire
-  - Spatule
-
-  </details>
-
-  ---
-
-  <details open>
-    <summary><strong>👨‍🍳 Étapes</strong></summary>
-
-  1. Cuire les pâtes dans l’eau salée, égoutter.
-  2. Chauffer l’huile, cuire la viande, assaisonner.
-  3. Ajouter l’oignon émincé, cuire 2 min.
-  4. Ajouter les pâtes, mélanger.
-  5. Casser l’œuf, mélanger rapidement.
-  6. Cuire 1 min, ajouter les herbes, servir.
-
-  </details>
-
-  ---
-
-  <details open>
-    <summary><strong>♻️ Anti-gaspillage</strong></summary>
-
-  Utilise un œuf seul, un petit reste de viande et un paquet de pâtes déjà ouvert.
-
-  </details>
-MARKDOWN
 
 puts "Creating seed recipe..."
+puts ""
+puts ""
+
+
+message_content = "<div id='global-container'>\n  <h1 id='recipe-title'> Soupe de Poulet et Légumes à la Tomate </h1>\n\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 40 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 30 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Casserole ou faitout </li>\n        <li> Cuillère en bois </li>\n        <li> Soupietière ou passoire </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoires</strong></summary>\n        <ul>\n          <li> Restes de poulet (cuits ou cru) </li>\n          <li> Tomates </li>\n          <li> Courgettes </li>\n          <li> Poivrons </li>\n          <li> Bouillon de légumes </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes fraîches (persil, basilic) </li>\n          <li> Huile d'olive </li>\n          <li> Poivre et sel </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li>Découper les légumes en morceaux : courgettes et poivrons.</li>\n      <li>Dans une casserole, faire revenir légèrement les légumes avec un peu d'huile si désiré.</li>\n      <li>Ajouter le poulet coupé en morceaux, puis couvrir avec le bouillon de légumes.</li>\n      <li>Incorporer les tomates coupées en dés dans la casserole.</li>\n      <li>Assaisonner avec du sel, poivre et herbes selon votre goût.</li>\n      <li>Laisser mijoter à feu moyen pendant environ 30 minutes jusqu'à ce que les légumes soient tendres.</li>\n    </ol>\n  </details>\n</div>"
+recipe_content = "<div id='global-container'>\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 40 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 30 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Casserole ou faitout </li>\n        <li> Cuillère en bois </li>\n        <li> Soupietière ou passoire </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoires</strong></summary>\n        <ul>\n          <li> Restes de poulet (cuits ou cru) </li>\n          <li> Tomates </li>\n          <li> Courgettes </li>\n          <li> Poivrons </li>\n          <li> Bouillon de légumes </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes fraîches (persil, basilic) </li>\n          <li> Huile d'olive </li>\n          <li> Poivre et sel </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li>Découper les légumes en morceaux : courgettes et poivrons.</li>\n      <li>Dans une casserole, faire revenir légèrement les légumes avec un peu d'huile si désiré.</li>\n      <li>Ajouter le poulet coupé en morceaux, puis couvrir avec le bouillon de légumes.</li>\n      <li>Incorporer les tomates coupées en dés dans la casserole.</li>\n      <li>Assaisonner avec du sel, poivre et herbes selon votre goût.</li>\n      <li>Laisser mijoter à feu moyen pendant environ 30 minutes jusqu'à ce que les légumes soient tendres.</li>\n    </ol>\n  </details>\n</div>"
 
 recipe = Recipe.create!(
-  name: "Pâtes sautées à la viande hachée et œuf",
-  content: recipe_markdown,
+  name: "Soupe de Poulet et Légumes à la Tomate",
+  content: recipe_content,
   user: user
 )
+Message.create!(
+  recipe: recipe,
+  role: "assistant",
+  content: message_content
+)
 
-puts "Created recipe ##{recipe.id}"
+puts "#{recipe.name} created!"
+
+
+message_content = "<div id='global-container'>\n <h1 id='recipe-title'> Risotto au Parmesan, Vin et Champignons </h1>\n\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 30 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 20 min </li>\n        <li> Portions : 2 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Poêle ou casserole </li>\n        <li> Cuillère en bois </li>\n        <li> Râpe à fromage </li>\n        <li> Verre ou bol </li>\n        <li> Couteau </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoires</strong></summary>\n        <ul>\n          <li> Riz cuit </li>\n          <li> Parmesan râpé </li>\n          <li> Champignons (frais ou restes) </li>\n          <li> Vin blanc </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes (persil, thym) </li>\n          <li> Huile d'olive </li>\n          <li> Sel, poivre </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li>Dans une poêle, faites revenir les champignons coupés en morceaux avec un peu d'huile si désiré, jusqu'à ce qu'ils soient dorés.</li>\n      <li>Ajoutez le vin blanc dans la poêle et laissez réduire légèrement.</li>\n      <li>Incorporez le riz cuit dans la poêle avec les champignons et mélangez bien.</li>\n      <li>Ajoutez le Parmesan râpé et remuez pour qu'il fonde et enrobe le tout.</li>\n      <li>Assaisonnez avec sel, poivre et herbes selon votre goût.</li>\n      <li>Servez chaud, décoré d'un peu de Parmesan supplémentaire si souhaité.</li>\n    </ol>\n  </details>\n</div>"
+recipe_content = "<div id='global-container'>\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 30 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 20 min </li>\n        <li> Portions : 2 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Poêle ou casserole </li>\n        <li> Cuillère en bois </li>\n        <li> Râpe à fromage </li>\n        <li> Verre ou bol </li>\n        <li> Couteau </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoires</strong></summary>\n        <ul>\n          <li> Riz cuit </li>\n          <li> Parmesan râpé </li>\n          <li> Champignons (frais ou restes) </li>\n          <li> Vin blanc </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes (persil, thym) </li>\n          <li> Huile d'olive </li>\n          <li> Sel, poivre </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li>Dans une poêle, faites revenir les champignons coupés en morceaux avec un peu d'huile si désiré, jusqu'à ce qu'ils soient dorés.</li>\n      <li>Ajoutez le vin blanc dans la poêle et laissez réduire légèrement.</li>\n      <li>Incorporez le riz cuit dans la poêle avec les champignons et mélangez bien.</li>\n      <li>Ajoutez le Parmesan râpé et remuez pour qu'il fonde et enrobe le tout.</li>\n      <li>Assaisonnez avec sel, poivre et herbes selon votre goût.</li>\n      <li>Servez chaud, décoré d'un peu de Parmesan supplémentaire si souhaité.</li>\n    </ol>\n  </details>\n</div>"
+
+recipe = Recipe.create!(
+  name: "Risotto au Parmesan, Vin et Champignons",
+  content: recipe_content,
+  user: user
+)
+Message.create!(
+  recipe: recipe,
+  role: "assistant",
+  content: message_content
+)
+
+puts "#{recipe.name} created!"
+
+
+message_content = "<div id='global-container'>\n  <h1 id='recipe-title'>Soupe de légumes et bœuf</h1>\n\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 45 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 35 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Grande casserole </li>\n        <li> Cuillère en bois </li>\n        <li> Râpe (optionnel pour les carottes) </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> Bouillon de légumes </li>\n          <li> Carottes </li>\n          <li> Bœuf (morceaux pour faire mijoter) </li>\n          <li> Courgettes </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes (persil, thym, laurier) </li>\n          <li> Poivre </li>\n          <li> Huile </li>\n          <li> Sel </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Éplucher et couper les carottes et les courgettes en morceaux.</li>\n      <li> Dans une grande casserole, faire revenir le bœuf avec un peu d'huile jusqu'à ce qu'il soit doré.</li>\n      <li> Ajouter les carottes et les courgettes dans la casserole, puis verser le bouillon de légumes.</li>\n      <li> Assaisonner avec du sel, du poivre et des herbes selon votre goût.</li>\n      <li> Porter à ébullition, puis réduire le feu et laisser mijoter pendant 30 minutes.</li>\n      <li> Vérifier la cuisson des légumes et de la viande, ajuster l'assaisonnement si nécessaire.</li>\n      <li> Servir chaud, accompagné de pain si souhaité.</li>\n    </ol>\n  </details>\n</div>"
+recipe_content =  "<div id='global-container'>\n <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : facile </li>\n        <li> Temps total : 45 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 35 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Grande casserole </li>\n        <li> Cuillère en bois </li>\n        <li> Râpe (optionnel pour les carottes) </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> Bouillon de légumes </li>\n          <li> Carottes </li>\n          <li> Bœuf (morceaux pour faire mijoter) </li>\n          <li> Courgettes </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Herbes (persil, thym, laurier) </li>\n          <li> Poivre </li>\n          <li> Huile </li>\n          <li> Sel </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Éplucher et couper les carottes et les courgettes en morceaux.</li>\n      <li> Dans une grande casserole, faire revenir le bœuf avec un peu d'huile jusqu'à ce qu'il soit doré.</li>\n      <li> Ajouter les carottes et les courgettes dans la casserole, puis verser le bouillon de légumes.</li>\n      <li> Assaisonner avec du sel, du poivre et des herbes selon votre goût.</li>\n      <li> Porter à ébullition, puis réduire le feu et laisser mijoter pendant 30 minutes.</li>\n      <li> Vérifier la cuisson des légumes et de la viande, ajuster l'assaisonnement si nécessaire.</li>\n      <li> Servir chaud, accompagné de pain si souhaité.</li>\n    </ol>\n  </details>\n</div>"
+
+recipe = Recipe.create!(
+  name: "Soupe de légumes et bœuf",
+  content: recipe_content,
+  user: user
+)
+Message.create!(
+  recipe: recipe,
+  role: "assistant",
+  content: message_content
+)
+
+puts "#{recipe.name} created!"
+
+
+message_content = "<div id='global-container'>\n  <h1 id='recipe-title'>Riz aux légumes et poulet</h1>\n\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : Facile </li>\n        <li> Temps total : 40 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 30 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Casserole </li>\n        <li> Poêle </li>\n        <li> Cuillère en bois </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> 2 filets de poulet </li>\n          <li> 2 tomates </li>\n          <li> 200 g de riz </li>\n          <li> 2 poivrons </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Huile d'olive </li>\n          <li> Herbes (persil, thym) </li>\n          <li> Sel et poivre </li>\n        </ul>\n      </div>\n    </div>\n\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Couper le poulet en morceaux. Émincer les poivrons et couper les tomates en dés. </li>\n      <li> Faire revenir le poulet dans une poêle avec un peu d'huile jusqu'à ce qu'il soit doré. Réserver. </li>\n      <li> Dans la même poêle, faire revenir les poivrons et les tomates pendant 5 minutes. </li>\n      <li> Ajouter le riz, couvrir d'eau ou de bouillon, puis remettre le poulet. Saler, poivrer, ajouter des herbes si souhaité. </li>\n      <li> Laisser mijoter à feu doux pendant environ 20 minutes, jusqu'à ce que le riz soit cuit. </li>\n    </ol>\n  </details>\n</div>"
+recipe_content = "<div id='global-container'>\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : Facile </li>\n        <li> Temps total : 40 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 30 min </li>\n        <li> Portions : 4 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Casserole </li>\n        <li> Poêle </li>\n        <li> Cuillère en bois </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> 2 filets de poulet </li>\n          <li> 2 tomates </li>\n          <li> 200 g de riz </li>\n          <li> 2 poivrons </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Huile d'olive </li>\n          <li> Herbes (persil, thym) </li>\n          <li> Sel et poivre </li>\n        </ul>\n      </div>\n    </div>\n\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Couper le poulet en morceaux. Émincer les poivrons et couper les tomates en dés. </li>\n      <li> Faire revenir le poulet dans une poêle avec un peu d'huile jusqu'à ce qu'il soit doré. Réserver. </li>\n      <li> Dans la même poêle, faire revenir les poivrons et les tomates pendant 5 minutes. </li>\n      <li> Ajouter le riz, couvrir d'eau ou de bouillon, puis remettre le poulet. Saler, poivrer, ajouter des herbes si souhaité. </li>\n      <li> Laisser mijoter à feu doux pendant environ 20 minutes, jusqu'à ce que le riz soit cuit. </li>\n    </ol>\n  </details>\n</div>"
+
+recipe = Recipe.create!(
+  name: "Riz aux légumes et poulet",
+  content: recipe_content,
+  user: user
+)
+Message.create!(
+  recipe: recipe,
+  role: "assistant",
+  content: message_content
+)
+
+puts "#{recipe.name} created!"
+
+
+message_content = "<div id='global-container'>\n  <h1 id='recipe-title'> Omelette aux patates et bacon </h1>\n\n  <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : Facile </li>\n        <li> Temps total : 20 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 10 min </li>\n        <li> Portions : 2 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Poêle </li>\n        <li> Spatule </li>\n        <li> Bol </li>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Assiette </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> 2 œufs </li>\n          <li> 4 tranches de bacon </li>\n          <li> 2 pommes de terre </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Sel, poivre, herbes </li>\n          <li> Huile </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Éplucher et couper les pommes de terre en petits dés, puis les faire revenir dans une poêle avec un peu d'huile jusqu'à ce qu'elles soient dorées et croustillantes.</li>\n      <li> Pendant ce temps, faire cuire le bacon dans une autre poêle jusqu'à ce qu'il soit croustillant, puis le couper en morceaux.</li>\n      <li> Battre les œufs dans un bol avec du sel, du poivre et des herbes si désiré.</li>\n      <li> Ajouter les pommes de terre et le bacon dans le bol avec les œufs, puis mélanger.</li>\n      <li> Verser la préparation dans la poêle chaude et cuire à feu moyen jusqu'à ce que l'omelette soit bien prise.</li>\n      <li> Servir chaud, accompagné éventuellement d'herbes fraîches.</li>\n    </ol>\n  </details>\n</div>"
+recipe_content = "<div id='global-container'>\n <div class='short-infos-and-ustensils'>\n    <details open class='infos-rapides'>\n      <summary><strong> Infos rapides</strong></summary>\n      <ul>\n        <li> Niveau : Facile </li>\n        <li> Temps total : 20 min </li>\n        <li> Préparation : 10 min </li>\n        <li> Cuisson : 10 min </li>\n        <li> Portions : 2 personnes </li>\n      </ul>\n    </details>\n\n    <details open class='ustensiles'>\n      <summary><strong> Ustensiles</strong></summary>\n      <ul>\n        <li> Poêle </li>\n        <li> Spatule </li>\n        <li> Bol </li>\n        <li> Couteau </li>\n        <li> Planche à découper </li>\n        <li> Assiette </li>\n      </ul>\n    </details>\n  </div>\n\n  <details open class='ingredients-block'>\n  <summary><strong> Ingrédients</strong></summary>\n    <div class='ingredients-container'>\n      <div class='ingredients-needed'>\n        <summary><strong id='title-igredients-needed'> Ingrédients Obligatoire</strong></summary>\n        <ul>\n          <li> 2 œufs </li>\n          <li> 4 tranches de bacon </li>\n          <li> 2 pommes de terre </li>\n        </ul>\n      </div>\n\n      <div class='optional-ingredients'>\n        <summary><strong id='title-igredients-optional'> Ingrédients Optionnels </strong></summary>\n        <ul>\n          <li> Sel, poivre, herbes </li>\n          <li> Huile </li>\n        </ul>\n      </div>\n    </div>\n  </details>\n\n  <details open class='etapes-block'>\n    <summary><strong> Étapes</strong></summary>\n    <ol>\n      <li> Éplucher et couper les pommes de terre en petits dés, puis les faire revenir dans une poêle avec un peu d'huile jusqu'à ce qu'elles soient dorées et croustillantes.</li>\n      <li> Pendant ce temps, faire cuire le bacon dans une autre poêle jusqu'à ce qu'il soit croustillant, puis le couper en morceaux.</li>\n      <li> Battre les œufs dans un bol avec du sel, du poivre et des herbes si désiré.</li>\n      <li> Ajouter les pommes de terre et le bacon dans le bol avec les œufs, puis mélanger.</li>\n      <li> Verser la préparation dans la poêle chaude et cuire à feu moyen jusqu'à ce que l'omelette soit bien prise.</li>\n      <li> Servir chaud, accompagné éventuellement d'herbes fraîches.</li>\n    </ol>\n  </details>\n</div>"
+recipe = Recipe.create!(
+  name: "Omelette aux patates et bacon",
+  content: recipe_content,
+  user: user
+)
+Message.create!(
+  recipe: recipe,
+  role: "assistant",
+  content: message_content
+)
+
+puts "#{recipe.name} created!"
+puts " "
+puts " "
+
+puts "All done! #{Recipe.all.count} recipes have been created."
