@@ -1,5 +1,4 @@
 <div class="">
-
   <h1 class="text-center" >Mes recettes</h1>
   <div class="container my-4">
     <!-- Responsive grid: 1 col (xs), 2 cols (md), 3 cols (lg), with gap-3 -->
@@ -7,15 +6,17 @@
       <% @recipes.each do |recipe| %>
         <div class="col">
           <%= link_to recipe_path(recipe), class: "recipe-card d-block h-100 text-decoration-none" do %>
-
             <div class="recipe-title-card">
-              <%= image_tag 'logo.png', class: 'recipe-img-card', alt: 'Image recette' %>
+              <% unless recipe.image.url %>
+                <%= image_tag 'logo.png', class: 'recipe-img-card', alt: 'Image recette' %>
+              <% else %>
+                <%= image_tag recipe.image.url, class: 'recipe-img-card', alt: 'Image recette' %>
+              <% end %>
               <h3> <%= recipe.name.presence || 'Sans titre' %> </h3>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
-
   </div>
 </div>
