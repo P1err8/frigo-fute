@@ -1,80 +1,37 @@
+require "open-uri"
+
 class Recipe < ApplicationRecord
   belongs_to :user
   has_many :messages
-
-  MARKDOWN = "<<~MARKDOWN
-    # 🍝 Pâtes sautées à la viande hachée et œuf
-
-    ---
-
-    <details open>
-      <summary><strong>📌 Infos rapides</strong></summary>
-
-    - Niveau : facile
-    - Temps total : 20 min
-    - Préparation : 10 min
-    - Cuisson : 10 min
-    - Portions : 2 personnes
-
-    </details>
-
-    ---
-
-    <details open>
-      <summary><strong>🥣 Ingrédients</strong></summary>
-
-    ### Base
-    - 200 g de pâtes
-    - 150 g de viande hachée
-    - 1 œuf
-
-    ### Optionnel
-    - 1 oignon
-    - 1 c. à soupe d'huile
-    - Sel, poivre
-    - Herbes séchées
-
-    </details>
-
-    ---
-
-    <details open>
-      <summary><strong>🔧 Ustensiles</strong></summary>
-
-    - Casserole
-    - Poêle
-    - Passoire
-    - Spatule
-
-    </details>
-
-    ---
-
-    <details open>
-      <summary><strong>👨‍🍳 Étapes</strong></summary>
-
-    1. Cuire les pâtes dans l'eau salée, égoutter.
-    2. Chauffer l'huile, cuire la viande, assaisonner.
-    3. Ajouter l'oignon émincé, cuire 2 min.
-    4. Ajouter les pâtes, mélanger.
-    5. Casser l'œuf, mélanger rapidement.
-    6. Cuire 1 min, ajouter les herbes, servir.
-
-    </details>
-
-    ---
-
-    <details open>
-      <summary><strong>♻️ Anti-gaspillage</strong></summary>
-
-    Utilise un œuf seul, un petit reste de viande et un paquet de pâtes déjà ouvert.
-
-    </details>
-  MARKDOWN"
+  has_one_attached :image
 
   def find_name
     doc = Nokogiri::HTML(self.content)
     title = doc.at_css("#recipe-title")&.text&.strip.sub(/^#\s*/, "")
   end
 
+  def generate_and_store_picture!
+    prompt = "
+      Génère une image appétissante et professionnelle de ce plat culinaire.
+      L'image doit être :
+      - Réaliste
+      - Bien éclairée avec une lumière naturelle
+      - Présentée de manière appétissante sur une belle assiette
+      - Avec des couleurs vives et naturelles
+      - Style photographie culinaire professionnelle
+
+      Plat à photographier : #{name}
+
+      Ne génère que l'image du plat, sans texte ni éléments graphiques superposés.
+    "
+
+    image = RubyLLM.paint(prompt)
+    file = URI.open(image.url)
+    self.image.attach(
+      io: file,
+      filename: "image.jpg",
+      content_type: "image/jpeg"
+    )
+
+  end
 end
