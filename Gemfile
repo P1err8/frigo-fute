@@ -53,6 +53,7 @@ gem "ostruct"
 gem "devise"
 gem "ruby_llm", "~> 1.2.0"
 gem "markdown"
+gem "nokogiri"
 
 group :development, :test do
   gem "dotenv-rails"
