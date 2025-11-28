@@ -3,14 +3,13 @@
   <div class="row g-3">
     <!-- Recipe Title Card -->
     <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe), class: "recipe-card" do %>
-          <div class="col-12 col-md-6 col-lg-4">
-            <div class="recipe-title-card">
-              <%= recipe.name %>
-              <%= recipe.content.first(50) %>
-            </div>
+      <%= link_to recipe_path(recipe), class: "recipe-card" do %>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="recipe-title-card">
+            <%= recipe.name %>
           </div>
-        <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
