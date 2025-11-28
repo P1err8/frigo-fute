@@ -24,6 +24,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
+
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
@@ -54,6 +55,9 @@ gem "devise"
 gem "ruby_llm", "~> 1.2.0"
 gem "markdown"
 gem "nokogiri"
+gem "cloudinary"
+gem "image_processing", "~> 1.2"
+gem "open-uri"
 
 group :development, :test do
   gem "dotenv-rails"
