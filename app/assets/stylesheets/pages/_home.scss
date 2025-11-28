@@ -28,12 +28,18 @@ body {
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease;
+
+  &:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.pixabay.com/photo/2023/06/20/17/30/youtube-banner-8077450_1280.jpg");
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
 
-.btn-recipe:hover {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://cdn.pixabay.com/photo/2023/06/20/17/30/youtube-banner-8077450_1280.jpg");
-
-}
 
 
 .btn-historic {
@@ -55,9 +61,14 @@ body {
   text-decoration: none;
   transition: 0.3s ease;
 
-}
+  &:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1653233797467-1a528819fd4f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2tpbmd8ZW58MHx8MHx8fDA%3D.JPEG");
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  }
 
-.btn-historic:hover {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1653233797467-1a528819fd4f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvb2tpbmd8ZW58MHx8MHx8fDA%3D.JPEG");
+  &:active {
+    transform: scale(0.98);
+  }
 
 }
