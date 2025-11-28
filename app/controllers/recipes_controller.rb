@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     - Pas plus de 6-8 étapes.
     - Chaque section doit être dans une balise <details> avec un <summary>.
     - Pas d'explications internes, pas de notes, pas d'autres formats.
+    - Interdiction de mettre le mot gaspillage dans '{Titre de la recette}'
     - Le résultat final doit être EXCLUSIVEMENT du Markdown + HTML `<details>`.
     - Toujours respecter STRICTEMENT le FORMAT ci-dessous ne sors jamais de cette structure.
     FORMAT OBLIGATOIRE :
@@ -88,11 +89,7 @@ class RecipesController < ApplicationController
     </div>
   "
   def index
-    @recipes = []
-    current_user.message_ids.each do |msg|
-
-      @recipes << Message.find(msg)
-    end
+    @recipes = Recipe.all
   end
 
   def new
@@ -114,29 +111,10 @@ class RecipesController < ApplicationController
     if @message.save
       ruby_llm_chat = RubyLLM.chat
       response = ruby_llm_chat.with_instructions(SYSTEM_PROMPT).ask(@message.content)
+
       # message assistant
       Message.create(role: "assistant", content: response.content, recipe: @recipe)
 
-      # Persist AI-generated recipe content into the Recipe record
-      ai_markdown = response.content.to_s
-      # Extract title from: <h1 id='recipe-title'> {Titre de la recette} </h1>
-      extracted_title = begin
-        # Capture inner text of the H1 with id=recipe-title
-        m = ai_markdown.match(/<h1\s+id=['"]recipe-title['"]\s*>\s*(.*?)\s*<\/h1>/im)
-        inner = m && m[1] ? m[1].to_s.strip : nil
-        if inner
-          # Remove surrounding curly braces (e.g., {Titre de la recette}) to get just the title
-          inner = inner.gsub(/^\{\s*/, '').gsub(/\s*\}$/, '').strip
-        end
-        inner.presence
-      rescue
-        nil
-      end
-
-      @recipe.update(
-        name: (extracted_title.presence || @recipe.name || 'untitled'),
-        content: ai_markdown
-      )
       redirect_to recipe_path(@recipe)
     else
       render "recipes/new", status: :unprocessable_entity
