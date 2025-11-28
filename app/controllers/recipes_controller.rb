@@ -88,7 +88,11 @@ class RecipesController < ApplicationController
     </div>
   "
   def index
-    @recipes = current_user.recipes
+    @recipes = []
+    current_user.message_ids.each do |msg|
+
+      @recipes << Message.find(msg)
+    end
   end
 
   def new

@@ -1,5 +1,5 @@
 .recipe-generator-wrapper {
-  background: #f8f9fa;
+  background: #f4e8d5;
   height: 90vh;
   width: 100%;
   margin: 0;
@@ -7,7 +7,7 @@
 
   .generator-card {
     border-radius: 1rem;
-    background: white;
+    background: #f0ede8;
   }
 
   .ingredient-input {
@@ -15,11 +15,8 @@
     resize: vertical;
     font-size: 1.05rem;
     padding: 1rem;
+    background: #f3f1ec;
   }
-}
-
-.notice {
-  background: #f8f9fa !important;
 }
 .h1custom {
   font-size: 2rem;
@@ -28,4 +25,31 @@
 
 .text-center button {
   border-radius: 0.75rem;
+}
+
+.recipe-title-card {
+  background: #fff;
+  padding: 1.4rem 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.05);
+
+  h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c2c2c;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+    border-color: #ffb347;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 }
